@@ -1,0 +1,14 @@
+.wrapper{
+    margin: 0px;
+    padding: 10px;
+}
+.form-group{
+    padding: 10px;
+}
+.form-group input{
+    margin-left: 10px;
+}
+.errorMessage{
+    color: red;
+    font-size: small;
+}

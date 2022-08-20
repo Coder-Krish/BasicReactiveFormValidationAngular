@@ -1,0 +1,63 @@
+<div class="wrapper">
+    <form [formGroup]="addPerson.personForm" (ngSubmit)="Add()">
+    <div class="form-group">
+        <label for="">FirstName:</label>
+        <input type="text" name="FirstName" id="id_FirstName" formControlName="FirstName">
+        <div class="errorMessage" *ngIf="addPerson.personForm.invalid && addPerson.personForm.get('FirstName')?.errors && addPerson.personForm.get('FirstName')?.touched">
+            <span>FirstName is required</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">LastName:</label>
+        <input type="text" name="LastName" id="id_LastName" formControlName="LastName">
+        <div class="errorMessage" *ngIf="addPerson.personForm.invalid && addPerson.personForm.get('LastName')?.errors && addPerson.personForm.get('LastName')?.touched">
+            <span>LastName is required</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Address:</label>
+        <input type="text" name="Address" id="id_Address" formControlName="Address">
+        <div class="errorMessage" *ngIf="addPerson.personForm.invalid && addPerson.personForm.get('Address')?.errors && addPerson.personForm.get('Address')?.touched">
+            <span>Address is required</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">PhoneNumber:</label>
+        <input type="tel" name="PhoneNumber" id="id_PhoneNumber" formControlName="PhoneNumber">
+        <div class="errorMessage" *ngIf="addPerson.personForm.invalid && addPerson.personForm.get('PhoneNumber')?.getError('required') && addPerson.personForm.get('PhoneNumber')?.touched">
+            <span>Phone Number is required</span>
+        </div>
+        <div class="errorMessage" *ngIf="addPerson.personForm.invalid && addPerson.personForm.get('PhoneNumber')?.getError('pattern') && addPerson.personForm.get('PhoneNumber')?.touched">
+            <span>Wrong Phone Number</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Add addPerson" id="id_btn_Add">
+    </div>
+</form>
+
+
+<div class="table" *ngIf="personList && personList.length">
+    <table>
+        <tr>
+            <th>S.N</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Action</th>
+        </tr>
+        <tr *ngFor="let row of personList;let i = index;">
+            <td>{{ i + 1 }}</td>
+            <td>{{row.FirstName}}</td>
+            <td>{{row.LastName}}</td>
+            <td>{{row.Address}}</td>
+            <td>{{row.PhoneNumber}}</td>
+            <td>
+                <button (click)="Edit(row)">Edit</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</div>
