@@ -28,13 +28,14 @@ export class PersonComponent implements OnInit {
    
   }
 
-  Edit(row:Person){
+  //This function only views the selected row in the form
+  View(row:Person){
     this.addPerson.personForm.patchValue({
       FirstName:row.FirstName,
       LastName:row.LastName,
       Address:row.Address,
       PhoneNumber:row.PhoneNumber
-    })
+    });
   }
 
 }
